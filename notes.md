@@ -23,6 +23,15 @@
     websocket server in a query param for now
 
 13. Initilize a new db package where you write the schema of the project
+
 14. import the db package in the http layer and atrt outting things in the DB
 
 15. Add a common package where we add the zod schema and the JWT SECERT
+
+16. Defining the schema in schema.prisma
+
+
+## Level 3:
+
+
+
