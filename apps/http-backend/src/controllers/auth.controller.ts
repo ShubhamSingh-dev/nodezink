@@ -2,11 +2,7 @@ import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { JWT_SECRET } from "@repo/backend-common/config";
-import {
-  CreateUserSchema,
-  SigninSchema,
-  CreateRoomSchema,
-} from "@repo/common/types";
+import { CreateUserSchema, SigninSchema } from "@repo/common/types";
 import { prismaClient } from "@repo/db/client";
 
 export const userSignup = async (req: Request, res: Response) => {
@@ -105,5 +101,3 @@ export const userSignin = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
-
