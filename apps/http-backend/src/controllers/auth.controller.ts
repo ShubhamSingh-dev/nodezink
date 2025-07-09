@@ -106,45 +106,4 @@ export const userSignin = async (req: Request, res: Response) => {
   }
 };
 
-export const createRoom = async (req: Request, res: Response) => {
-  const data = CreateRoomSchema.safeParse(req.body);
-  if (!data.success) {
-    res
-      .status(400)
-      .json({ message: "Invalid room data", errors: data.error.errors });
-    return;
-  }
 
-  try {
-    // Verify the admin user exists
-    const adminUser = await prismaClient.user.findUnique({
-      where: { id: data.data.adminId },
-    });
-
-    if (!adminUser) {
-      res.status(404).json({ message: "Admin user not found" });
-      return;
-    }
-
-    // Create new room
-    const newRoom = await prismaClient.room.create({
-      data: {
-        slug: data.data.slug,
-        adminId: data.data.adminId,
-      },
-    });
-
-    res.status(201).json({
-      message: "Room created successfully",
-      room: {
-        id: newRoom.id,
-        slug: newRoom.slug,
-        createdAt: newRoom.createdAt,
-        adminId: newRoom.adminId,
-      },
-    });
-  } catch (error) {
-    console.error("Error creating room:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-};

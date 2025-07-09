@@ -1,15 +1,9 @@
-import express from "express";
-import {
-  createRoom,
-  userSignin,
-  userSignup,
-} from "../controllers/auth.controller";
-import { authMiddleware } from "../middleware/auth.middleware";
+import express, { Router } from "express";
+import { userSignin, userSignup } from "../controllers/auth.controller";
 
-const router: express.Router = express.Router();
+const router: Router = express.Router();
 
 router.post("/signup", userSignup);
 router.post("/signin", userSignin);
-router.post("/create-room", authMiddleware, createRoom);
 
 export default router;
