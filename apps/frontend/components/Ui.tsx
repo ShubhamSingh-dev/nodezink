@@ -1,3 +1,9 @@
+import { Credits } from "./Credits";
+import { Menu } from "./Menu";
+import { ToolBar } from "./ToolBar";
+import { UndoRedo } from "./UndoRedo";
+import { Zoom } from "./Zoom";
+
 export function Ui() {
   return (
     <main className="ui">
