@@ -1,9 +1,19 @@
-import { Backward, Delete, Duplicate, Forward, ToBack, ToFront } from "@/assets/icons";
+import {
+  Backward,
+  Delete,
+  Duplicate,
+  Forward,
+  ToBack,
+  ToFront,
+} from "@/assets/icons";
+import { useAppContext } from "@/provider/AppStates";
+import { BACKGROUND_COLORS, STROKE_COLORS, STROKE_STYLES } from "../global/var";
 import React, { useEffect, useState } from "react";
 
-export function Style({ selectedElement }) {
+export function Style({ selectedElement: selectedElement }: any) {
   const { elements, setElements, setSelectedElement, setStyle } =
     useAppContext();
+
   const [elementStyle, setElementStyle] = useState({
     fill: selectedElement?.fill,
     strokeWidth: selectedElement?.strokeWidth,
@@ -236,7 +246,7 @@ export function Style({ selectedElement }) {
                 title="Delete"
                 className="itemButton option"
               >
-                <Delete/>
+                <Delete />
               </button>
               <button
                 type="button"
